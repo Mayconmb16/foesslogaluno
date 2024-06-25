@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Registro de Observações</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { text-align: center; }
+        form { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; }
+        input, textarea, button { width: 100%; padding: 10px; margin-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .actions { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sistema de Registro de Observações</h1>
+
+        <!-- Login Form -->
+        <div id="login-form">
+            <h2>Login</h2>
+            <form onsubmit="login(event)">
+                <label for="login-email">E-mail:</label>
+                <input type="email" id="login-email" required>
+                <label for="login-password">Senha:</label>
+                <input type="password" id="login-password" required>
+                <button type="submit">Login</button>
+            </form>
+            <button onclick="showRegisterForm()">Não tem uma conta? Cadastre-se</button>
+        </div>
+
+        <!-- Register Form -->
+        <div id="register-form" style="display:none;">
+            <h2>Cadastro</h2>
+            <form onsubmit="register(event)">
+                <label for="register-email">E-mail:</label>
+                <input type="email" id="register-email" required>
+                <label for="register-password">Senha:</label>
+                <input type="password" id="register-password" required>
+                <button type="submit">Cadastrar</button>
+            </form>
+            <button onclick="showLoginForm()">Já tem uma conta? Faça login</button>
+        </div>
+
+        <!-- Admin Approval Form -->
+        <div id="admin-approval-form" style="display:none;">
+            <h2>Aprovação de Usuários Pendentes</h2>
+            <form onsubmit="approveUser(event)">
+                <label for="admin-email">Seu e-mail (administrador):</label>
+                <input type="email" id="admin-email" required>
+                <label for="admin-password">Sua senha (administrador):</label>
+                <input type="password" id="admin-password" required>
+                <label for="user-email">E-mail do usuário a aprovar:</label>
+                <input type="email" id="user-email" required>
+                <button type="submit">Aprovar Usuário</button>
+            </form>
+        </div>
+
+        <!-- Main App -->
+        <div id="app" style="display:none;">
+            <h2>Nova Observação</h2>
+            <form id="observation-form" onsubmit="addObservation(event)">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" required>
+                <label for="studentNumber">Número de Aluno:</label>
+                <input type="text" id="studentNumber" required>
+                <label for="date">Data:</label>
+                <input type="date" id="date" required>
+                <label for="observation">Observação:</label>
+                <textarea id="observation" required></textarea>
+                <button type="submit">Salvar Observação</button>
+            </form>
+
+            <h2>Observações Registradas</h2>
+            <input type="text" id="search" placeholder="Buscar..." oninput="filterObservations()">
+            <button onclick="exportToCSV()">Exportar para CSV</button>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Número de Aluno</th>
+                        <th>Data</th>
+                        <th>Observação</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="observations-list"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Exemplo de funções JavaScript para cada funcionalidade, que devem ser definidas aqui
+
+        function showRegisterForm() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+            document.getElementById('admin-approval-form').style.display = 'none';
+            document.getElementById('app').style.display = 'none';
+        }
+
+        function showLoginForm() {
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('admin-approval-form').style.display = 'none';
+            document.getElementById('app').style.display = 'none';
+        }
+
+        function register(event) {
+            event.preventDefault();
+            // Implementar lógica de cadastro de usuário
+        }
+
+        function login(event) {
+            event.preventDefault();
+            // Implementar lógica de login
+        }
+
+        function approveUser(event) {
+            event.preventDefault();
+            // Implementar lógica de aprovação de usuário pelo administrador
+        }
+
+        function addObservation(event) {
+            event.preventDefault();
+            // Implementar lógica de adicionar observação
+        }
+
+        function filterObservations() {
+            // Implementar lógica de filtrar observações
+        }
+
+        function exportToCSV() {
+            // Implementar lógica de exportar para CSV
+        }
+    </script>
+</body>
+</html>
